@@ -10,14 +10,16 @@ namespace CryptoTrader
 {
     public class CryptoContext : DbContext
     {
-        public DbSet<CryptoCurrency> Student { get; set; }
+        public DbSet<CryptoCurrency> CryptoCurrencies { get; set; }
+
+        public string DbPath { get; set; }
 
         public CryptoContext(DbContextOptions<CryptoContext> options) : base(options) { }
         public CryptoContext() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
+            SqlConnectionStringBuilder builder = new()
             {
                 DataSource = "Donau.hiof.no",
                 InitialCatalog = "thomasjg",
