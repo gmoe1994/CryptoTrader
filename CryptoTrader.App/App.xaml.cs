@@ -57,7 +57,7 @@ namespace CryptoTrader.App
             services.AddSingleton<INavigationService, NavigationService>();
 
             // Core Services
-            services.AddSingleton<ISampleDataService, SampleDataService>();
+            services.AddSingleton<IExternalApiService, ExternalApiService>();
 
             // Views and ViewModels
             services.AddTransient<ShellPage>();

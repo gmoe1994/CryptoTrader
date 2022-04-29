@@ -1,4 +1,5 @@
 ﻿using ComicsUniverse.Core.Helpers;
+using CryptoTrader.App.Core.Contracts.Services;
 using CryptoTrader.App.Core.Models;
 using Newtonsoft.Json;
 using System;
@@ -10,7 +11,7 @@ using System.Web;
 
 namespace CryptoTrader.App.Core.Services
 {
-    public class ExternalApiService
+    public class ExternalApiService : IExternalApiService
     {
         public ExternalApiService() { }
 

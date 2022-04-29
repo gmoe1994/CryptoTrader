@@ -6,8 +6,9 @@ using CryptoTrader.App.Core.Models;
 namespace CryptoTrader.App.Core.Contracts.Services
 {
     // Remove this class once your pages/features are using your data.
-    public interface ISampleDataService
+    public interface IExternalApiService
     {
-        Task<IEnumerable<SampleOrder>> GetContentGridDataAsync();
+        Task<IEnumerable<CryptoDto>> GetCryptoDtosAsync();
     }
 }
+

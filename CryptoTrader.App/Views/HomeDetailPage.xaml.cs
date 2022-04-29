@@ -22,7 +22,7 @@ namespace CryptoTrader.App.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            this.RegisterElementForConnectedAnimation("animationKeyContentGrid", itemHero);
+            //this.RegisterElementForConnectedAnimation("animationKeyContentGrid", itemHero);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

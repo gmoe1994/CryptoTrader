@@ -9,34 +9,37 @@ using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Contracts.ViewModels;
 using CryptoTrader.App.Core.Contracts.Services;
 using CryptoTrader.App.Core.Models;
+using CryptoTrader.App.Core.Services;
 
 namespace CryptoTrader.App.ViewModels
 {
     public class HomeViewModel : ObservableRecipient, INavigationAware
     {
         private readonly INavigationService _navigationService;
-        private readonly ISampleDataService _sampleDataService;
+        private readonly IExternalApiService _externalApiService;
         private ICommand _itemClickCommand;
 
-        public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<SampleOrder>(OnItemClick));
+        public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<CryptoDto>(OnItemClick));
 
-        public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
 
-        public HomeViewModel(INavigationService navigationService, ISampleDataService sampleDataService)
+        public HomeViewModel(INavigationService navigationService, IExternalApiService externalApiService)
         {
             _navigationService = navigationService;
-            _sampleDataService = sampleDataService;
+            _externalApiService = externalApiService;
         }
+
+        private readonly ExternalApiService service = new ExternalApiService();
+
+        public ObservableCollection<CryptoDto> Coins { get; set; } = new ObservableCollection<CryptoDto>();
 
         public async void OnNavigatedTo(object parameter)
         {
-            Source.Clear();
+          
+            var cryptoDtos = await service.GetCryptoDtosAsync();
 
-            // Replace this with your actual data
-            var data = await _sampleDataService.GetContentGridDataAsync();
-            foreach (var item in data)
+            foreach (var cryptoDto in cryptoDtos)
             {
-                Source.Add(item);
+                Coins.Add(cryptoDto);
             }
         }
 
@@ -44,12 +47,12 @@ namespace CryptoTrader.App.ViewModels
         {
         }
 
-        private void OnItemClick(SampleOrder clickedItem)
+        private void OnItemClick(CryptoDto clickedItem)
         {
             if (clickedItem != null)
             {
                 _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
-                _navigationService.NavigateTo(typeof(HomeDetailViewModel).FullName, clickedItem.OrderID);
+                _navigationService.NavigateTo(typeof(HomeDetailViewModel).FullName, clickedItem.Id);
             }
         }
     }

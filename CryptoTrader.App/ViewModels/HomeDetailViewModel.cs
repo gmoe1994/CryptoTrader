@@ -11,26 +11,26 @@ namespace CryptoTrader.App.ViewModels
 {
     public class HomeDetailViewModel : ObservableRecipient, INavigationAware
     {
-        private readonly ISampleDataService _sampleDataService;
-        private SampleOrder _item;
+        private readonly IExternalApiService _externalApiService;
+        private CryptoDto _item;
 
-        public SampleOrder Item
+        public CryptoDto Item
         {
             get { return _item; }
             set { SetProperty(ref _item, value); }
         }
 
-        public HomeDetailViewModel(ISampleDataService sampleDataService)
+        public HomeDetailViewModel(IExternalApiService externalApiService)
         {
-            _sampleDataService = sampleDataService;
+            _externalApiService = externalApiService;
         }
 
         public async void OnNavigatedTo(object parameter)
         {
-            if (parameter is long orderID)
+            if (parameter is string cryptoID)
             {
-                var data = await _sampleDataService.GetContentGridDataAsync();
-                Item = data.First(i => i.OrderID == orderID);
+                var data = await _externalApiService.GetCryptoDtosAsync();
+                Item = data.First(i => i.Id == cryptoID);
             }
         }
 

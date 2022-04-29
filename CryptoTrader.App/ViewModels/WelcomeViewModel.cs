@@ -20,15 +20,14 @@ namespace CryptoTrader.App.ViewModels
 
         public async void OnNavigatedTo(object parameter)
         {
-            if (true)
-            {
-                var cryptoDtos = await service.GetCryptoDtosAsync();
 
-                foreach (var cryptoDto in cryptoDtos)
-                {
-                    Coins.Add(cryptoDto);
-                }
+            var cryptoDtos = await service.GetCryptoDtosAsync();
+
+            foreach (var cryptoDto in cryptoDtos)
+            {
+                Coins.Add(cryptoDto);
             }
+
         }
 
         public void OnNavigatedFrom()

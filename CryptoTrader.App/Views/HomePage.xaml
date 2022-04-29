@@ -6,37 +6,50 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:models="using:CryptoTrader.App.Core.Models"
+    xmlns:models="using:CryptoTrader.App.Core.Models" xmlns:local="using:CryptoTrader.App.Helpers"
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
+    <Page.Resources>
+        <local:ConvertToCurrency x:Key="ConvertToCurrency"/>
+    </Page.Resources>
     <Grid x:Name="ContentArea">
         <controls:AdaptiveGridView
             Padding="{StaticResource MediumLeftRightMargin}"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
             DesiredWidth="180"
-            ItemHeight="160"
-            IsItemClickEnabled="True"
+            ItemHeight="200"
+            IsItemClickEnabled="true"
             ItemClickCommand="{x:Bind ViewModel.ItemClickCommand}"
-            ItemsSource="{x:Bind ViewModel.Source,Mode=OneWay}"
+            ItemsSource="{x:Bind ViewModel.Coins,Mode=OneWay}"
             SelectionMode="None"
             StretchContentForSingleRow="False">
             <controls:AdaptiveGridView.ItemTemplate>
-                <DataTemplate x:DataType="models:SampleOrder">
+                <DataTemplate x:DataType="models:CryptoDto">
                     <Grid
                         x:Name="itemThumbnail"
                         Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                         Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <FontIcon
-                                Glyph="{x:Bind Symbol}"
-                                AutomationProperties.Name="{x:Bind SymbolName}" />
+                            <Image
+                                Width="50"
+                                Source="{x:Bind Logo_url}"
+                                />
                             <TextBlock
                                 Margin="{StaticResource XXSmallTopMargin}"
                                 HorizontalAlignment="Center"
                                 Style="{ThemeResource BodyTextStyle}"
-                                Text="{x:Bind Company}" />
+                                Text="{x:Bind Name}" />
+                            <TextBlock
+                                Margin="{StaticResource XXSmallTopMargin}"
+                                HorizontalAlignment="Center"
+                                Style="{ThemeResource BodyTextStyle}"
+                                Text="{x:Bind Price, Converter={StaticResource ConvertToCurrency}}" />
+                            <Button 
+                                Content="Buy"
+                                Margin="0 15 0 0"
+                                HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
