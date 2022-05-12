@@ -4,6 +4,7 @@ using CryptoTrader.App.Core.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace CryptoTrader.App.Core.Services
     {
         public ExternalApiService() { }
 
-        
+
         public async Task<IEnumerable<CryptoDto>> GetCryptoDtosAsync()
         {
             var client = new WebClient();

@@ -8,5 +8,60 @@
     xmlns:models="using:CryptoTrader.App.Core.Models" xmlns:local="using:CryptoTrader.App.Helpers"
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
-    
+
+    <Page.Resources>
+        <local:ConvertToCurrency x:Key="ConvertToCurrency"/>
+    </Page.Resources>
+
+    <Grid
+        Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+        Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="top">
+            <Image 
+                Source="{x:Bind ViewModel.Item.Logo_url}" 
+                Height="200"
+                VerticalAlignment="Top" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                Margin="10, 30, 5, 10"
+                HorizontalAlignment="Center"
+                Style="{ThemeResource BodyTextStyle}"
+                Text="Name:" />
+                <TextBlock
+                Margin="5, 30, 10, 10"
+                HorizontalAlignment="Center"
+                Style="{ThemeResource BodyTextStyle}"
+                Text="{x:Bind ViewModel.Item}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                Margin="10, 10, 5, 10"
+                HorizontalAlignment="Center"
+                Style="{ThemeResource BodyTextStyle}"
+                Text="ID/Symbol:" />
+                <TextBlock
+                Margin="5, 10, 10, 10"
+                HorizontalAlignment="Center"
+                Style="{ThemeResource BodyTextStyle}"
+                Text="{x:Bind ViewModel.Item.Id}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                Margin="10, 10, 5, 10"
+                HorizontalAlignment="Center"
+                Style="{ThemeResource BodyTextStyle}"
+                Text="Price: "/>
+                <TextBlock
+                Margin="5, 10, 10, 10"
+                HorizontalAlignment="Center"
+                Style="{ThemeResource BodyTextStyle}"
+                Text="{x:Bind ViewModel.Item.Price, Converter={StaticResource ConvertToCurrency}}" />
+            </StackPanel>
+
+            <!--<Button Margin="10, 10, 5, 10" Content="Add to portfolio" Click="OnButtonClick" Command="addToPortfolio"/>-->
+        </StackPanel>
+    </Grid>
+
 </Page>

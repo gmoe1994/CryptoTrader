@@ -28,6 +28,7 @@
             -->
             <NavigationViewItem x:Uid="Shell_Welcome" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.WelcomeViewModel" />
             <NavigationViewItem x:Uid="Shell_Home" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.HomeViewModel" />
+            <NavigationViewItem x:Uid="Shell_ListDetails" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.ListDetailsViewModel" />
         </NavigationView.MenuItems>
         <NavigationView.HeaderTemplate>
             <DataTemplate>

@@ -28,14 +28,14 @@ namespace CryptoTrader.App.ViewModels
             _externalApiService = externalApiService;
         }
 
-        private readonly ExternalApiService service = new ExternalApiService();
+        //private readonly ExternalApiService service = new ExternalApiService();
 
         public ObservableCollection<CryptoDto> Coins { get; set; } = new ObservableCollection<CryptoDto>();
 
         public async void OnNavigatedTo(object parameter)
         {
           
-            var cryptoDtos = await service.GetCryptoDtosAsync();
+            var cryptoDtos = await _externalApiService.GetCryptoDtosAsync();
 
             foreach (var cryptoDto in cryptoDtos)
             {

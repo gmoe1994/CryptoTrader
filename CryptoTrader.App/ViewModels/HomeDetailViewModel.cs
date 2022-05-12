@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -20,6 +21,7 @@ namespace CryptoTrader.App.ViewModels
             set { SetProperty(ref _item, value); }
         }
 
+
         public HomeDetailViewModel(IExternalApiService externalApiService)
         {
             _externalApiService = externalApiService;
@@ -30,6 +32,7 @@ namespace CryptoTrader.App.ViewModels
             if (parameter is string cryptoID)
             {
                 var data = await _externalApiService.GetCryptoDtosAsync();
+
                 Item = data.First(i => i.Id == cryptoID);
             }
         }
@@ -37,5 +40,7 @@ namespace CryptoTrader.App.ViewModels
         public void OnNavigatedFrom()
         {
         }
+
+
     }
 }

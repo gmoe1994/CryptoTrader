@@ -57,6 +57,7 @@ namespace CryptoTrader.App
             services.AddSingleton<INavigationService, NavigationService>();
 
             // Core Services
+            services.AddSingleton<ISampleDataService, SampleDataService>();
             services.AddSingleton<IExternalApiService, ExternalApiService>();
 
             // Views and ViewModels
@@ -68,6 +69,8 @@ namespace CryptoTrader.App
             services.AddTransient<HomePage>();
             services.AddTransient<HomeDetailViewModel>();
             services.AddTransient<HomeDetailPage>();
+            services.AddTransient<ListDetailsViewModel>();
+            services.AddTransient<ListDetailsPage>();
             return services.BuildServiceProvider();
         }
     }

@@ -46,11 +46,8 @@
                                 HorizontalAlignment="Center"
                                 Style="{ThemeResource BodyTextStyle}"
                                 Text="{x:Bind Price, Converter={StaticResource ConvertToCurrency}}" />
-                            <Button 
-                                Content="Buy"
-                                Margin="0 15 0 0"
-                                HorizontalAlignment="Center"/>
                         </StackPanel>
+
                     </Grid>
                 </DataTemplate>
             </controls:AdaptiveGridView.ItemTemplate>

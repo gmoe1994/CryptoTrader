@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CryptoTrader
 {
@@ -17,7 +12,7 @@ namespace CryptoTrader
         public string Name { get; set; }
 
         public double Price { get; set; }
-        
+
         public string Logo { get; set; }
 
     }
