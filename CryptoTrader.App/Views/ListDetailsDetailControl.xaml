@@ -4,7 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="using:CryptoTrader.App.Helpers"
     mc:Ignorable="d">
+
+	<UserControl.Resources>
+		<local:ConvertToCurrency x:Key="ConvertToCurrency"/>
+	</UserControl.Resources>
+	
     <ScrollViewer
         Name="ForegroundElement"
         HorizontalAlignment="Stretch"
@@ -12,14 +18,26 @@
         Padding="{StaticResource DetailPageMargin}"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
         IsTabStop="True">
-        <StackPanel HorizontalAlignment="Left">
+        <StackPanel HorizontalAlignment="Center">
             <StackPanel Name="block" Padding="0,15,0,0">
-                <TextBlock Text="Status" Style="{StaticResource DetailSubTitleStyle}" />
+				<Image
+                    Width="200"
+                    Source="{x:Bind ListDetailsMenuItem.Logo_url}"
+                    Margin="0, 0, 0, 50"
+                    />
+				<TextBlock Text="ID:" Style="{StaticResource DetailSubTitleStyle}" />
 
-                <TextBlock Text="{x:Bind ListDetailsMenuItem.Name, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+				<TextBlock Text="{x:Bind ListDetailsMenuItem.Id, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
 
-                
+				<TextBlock Text="Name:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+
+				<TextBlock Text="{x:Bind ListDetailsMenuItem.Name, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+
+				<TextBlock Text="Price:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+
+				<TextBlock Text="{x:Bind ListDetailsMenuItem.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
             </StackPanel>
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>

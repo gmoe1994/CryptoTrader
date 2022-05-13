@@ -13,55 +13,34 @@
         <local:ConvertToCurrency x:Key="ConvertToCurrency"/>
     </Page.Resources>
 
-    <Grid
-        Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-        Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="top">
-            <Image 
-                Source="{x:Bind ViewModel.Item.Logo_url}" 
-                Height="200"
-                VerticalAlignment="Top" />
-            <StackPanel Orientation="Horizontal">
-                <TextBlock
-                Margin="10, 30, 5, 10"
-                HorizontalAlignment="Center"
-                Style="{ThemeResource BodyTextStyle}"
-                Text="Name:" />
-                <TextBlock
-                Margin="5, 30, 10, 10"
-                HorizontalAlignment="Center"
-                Style="{ThemeResource BodyTextStyle}"
-                Text="{x:Bind ViewModel.Item}" />
+    <ScrollViewer
+        Name="ForegroundElement"
+        HorizontalAlignment="Stretch"
+        VerticalScrollMode="Enabled"
+        Padding="{StaticResource DetailPageMargin}"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+        IsTabStop="True">
+        <StackPanel HorizontalAlignment="Center">
+            <StackPanel Name="block" Padding="0,15,0,0">
+                <Image
+                    Width="200"
+                    Source="{x:Bind ViewModel.Item.Logo_url}"
+                    Margin="0, 0, 0, 50"
+                    />
+                <TextBlock Text="ID:" Style="{StaticResource DetailSubTitleStyle}" />
+
+                <TextBlock Text="{x:Bind ViewModel.Item.Id, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+
+                <TextBlock Text="Name:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+
+                <TextBlock Text="{x:Bind ViewModel.Item.Name, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+
+                <TextBlock Text="Price:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+
+                <TextBlock Text="{x:Bind ViewModel.Item.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock
-                Margin="10, 10, 5, 10"
-                HorizontalAlignment="Center"
-                Style="{ThemeResource BodyTextStyle}"
-                Text="ID/Symbol:" />
-                <TextBlock
-                Margin="5, 10, 10, 10"
-                HorizontalAlignment="Center"
-                Style="{ThemeResource BodyTextStyle}"
-                Text="{x:Bind ViewModel.Item.Id}" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <TextBlock
-                Margin="10, 10, 5, 10"
-                HorizontalAlignment="Center"
-                Style="{ThemeResource BodyTextStyle}"
-                Text="Price: "/>
-                <TextBlock
-                Margin="5, 10, 10, 10"
-                HorizontalAlignment="Center"
-                Style="{ThemeResource BodyTextStyle}"
-                Text="{x:Bind ViewModel.Item.Price, Converter={StaticResource ConvertToCurrency}}" />
-            </StackPanel>
-
-            <!--<Button Margin="10, 10, 5, 10" Content="Add to portfolio" Click="OnButtonClick" Command="addToPortfolio"/>-->
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
 
 </Page>

@@ -29,7 +29,6 @@
                     Margin="{StaticResource SmallLeftMargin}"
                     VerticalAlignment="Center">
                     <TextBlock Text="{x:Bind Name}" Style="{StaticResource ListTitleStyle}" />
-                    <TextBlock Text="{x:Bind Price}" Style="{StaticResource ListSubTitleStyle}" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
