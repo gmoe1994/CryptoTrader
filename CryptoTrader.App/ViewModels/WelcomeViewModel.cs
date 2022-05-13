@@ -14,7 +14,7 @@ namespace CryptoTrader.App.ViewModels
 
         }
 
-        private readonly ExternalApiService service = new ExternalApiService();
+        private readonly CryptoService service = new CryptoService();
 
         public ObservableCollection<CryptoDto> Coins { get; set; } = new ObservableCollection<CryptoDto>();
 

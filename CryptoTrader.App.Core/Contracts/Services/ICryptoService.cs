@@ -6,9 +6,14 @@ using CryptoTrader.App.Core.Models;
 namespace CryptoTrader.App.Core.Contracts.Services
 {
     // Remove this class once your pages/features are using your data.
-    public interface IExternalApiService
+    public interface ICryptoService
     {
         Task<IEnumerable<CryptoDto>> GetCryptoDtosAsync();
+        Task<IEnumerable<CryptoDto>> GetCryptosAsync();
+        Task<CryptoDto> CreateCryptoAsync(CryptoDto crypto);
+        Task<bool> DeleteCryptoAsync(CryptoDto crypto);
+        void UpdateCryptoAsync(CryptoDto crypto);
+
     }
 }
 

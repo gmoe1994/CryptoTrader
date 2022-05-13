@@ -13,7 +13,9 @@ namespace CryptoTrader
 
         public double Price { get; set; }
 
-        public string Logo { get; set; }
+        public string Logo_url { get; set; }
+
+        public int Quantity { get; set; }
 
     }
 }

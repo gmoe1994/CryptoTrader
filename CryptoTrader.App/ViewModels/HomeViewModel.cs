@@ -16,13 +16,13 @@ namespace CryptoTrader.App.ViewModels
     public class HomeViewModel : ObservableRecipient, INavigationAware
     {
         private readonly INavigationService _navigationService;
-        private readonly IExternalApiService _externalApiService;
+        private readonly ICryptoService _externalApiService;
         private ICommand _itemClickCommand;
 
         public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<CryptoDto>(OnItemClick));
 
 
-        public HomeViewModel(INavigationService navigationService, IExternalApiService externalApiService)
+        public HomeViewModel(INavigationService navigationService, ICryptoService externalApiService)
         {
             _navigationService = navigationService;
             _externalApiService = externalApiService;
@@ -35,7 +35,7 @@ namespace CryptoTrader.App.ViewModels
         public async void OnNavigatedTo(object parameter)
         {
           
-            var cryptoDtos = await _externalApiService.GetCryptoDtosAsync();
+            var cryptoDtos = await _externalApiService.GetCryptosAsync();
 
             foreach (var cryptoDto in cryptoDtos)
             {

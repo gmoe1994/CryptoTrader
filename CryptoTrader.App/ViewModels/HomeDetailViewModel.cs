@@ -12,7 +12,7 @@ namespace CryptoTrader.App.ViewModels
 {
     public class HomeDetailViewModel : ObservableRecipient, INavigationAware
     {
-        private readonly IExternalApiService _externalApiService;
+        private readonly ICryptoService _cryptoService;
         private CryptoDto _item;
 
         public CryptoDto Item
@@ -22,16 +22,16 @@ namespace CryptoTrader.App.ViewModels
         }
 
 
-        public HomeDetailViewModel(IExternalApiService externalApiService)
+        public HomeDetailViewModel(ICryptoService cryptoService)
         {
-            _externalApiService = externalApiService;
+            _cryptoService = cryptoService;
         }
 
         public async void OnNavigatedTo(object parameter)
         {
             if (parameter is string cryptoID)
             {
-                var data = await _externalApiService.GetCryptoDtosAsync();
+                var data = await _cryptoService.GetCryptosAsync();
 
                 Item = data.First(i => i.Id == cryptoID);
             }

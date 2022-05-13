@@ -7,6 +7,8 @@ namespace CryptoTrader.App.Core
 {
     public static class ApiAdress
     {
+        public const string PortfolioApi = "https://localhost:44321/api/";
+
         public const string DataApi = "https://api.nomics.com/v1/currencies/ticker";
 
         private static readonly string API_KEY = "a9dd48ab86d9a5226102aa57b06c0502fbf4259f";

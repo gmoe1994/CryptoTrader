@@ -15,6 +15,8 @@ namespace CryptoTrader.App.Core.Models
 
         public string Logo_url { get; set; }
 
+        public int Quantity { get; set; }
+
     }
 
 }

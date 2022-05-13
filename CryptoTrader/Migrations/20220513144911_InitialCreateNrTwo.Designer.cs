@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CryptoTrader.Migrations
 {
     [DbContext(typeof(CryptoContext))]
-    [Migration("20220425153001_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220513144911_InitialCreateNrTwo")]
+    partial class InitialCreateNrTwo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,7 @@ namespace CryptoTrader.Migrations
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)");
 
-                    b.Property<string>("Logo")
+                    b.Property<string>("Logo_url")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -34,6 +34,9 @@ namespace CryptoTrader.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -43,9 +46,10 @@ namespace CryptoTrader.Migrations
                         new
                         {
                             Id = "NET",
-                            Logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1024px-.NET_Logo.svg.png",
+                            Logo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1024px-.NET_Logo.svg.png",
                             Name = ".NET Coin",
-                            Price = 100000.0
+                            Price = 100000.0,
+                            Quantity = 1
                         });
                 });
 #pragma warning restore 612, 618
