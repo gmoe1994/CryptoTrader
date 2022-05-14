@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:local="using:CryptoTrader.App.Helpers"
+	xmlns:local="using:CryptoTrader.App.Helpers" xmlns:viewmodels="using:CryptoTrader.App.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ListDetailsViewModel}"
     mc:Ignorable="d">
+
+    
 
 	<UserControl.Resources>
 		<local:ConvertToCurrency x:Key="ConvertToCurrency"/>
@@ -19,7 +21,7 @@
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
         IsTabStop="True">
         <StackPanel HorizontalAlignment="Center">
-            <StackPanel Name="block" Padding="0,15,0,0">
+            <StackPanel Name="block" Padding="0,15,0,0" >
 				<Image
                     Width="200"
                     Source="{x:Bind ListDetailsMenuItem.Logo_url}"
@@ -35,7 +37,11 @@
 
 				<TextBlock Text="Price:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
 
-				<TextBlock Text="{x:Bind ListDetailsMenuItem.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                <TextBlock Text="{x:Bind ListDetailsMenuItem.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+
+                <TextBlock Text="Total Value:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+                <TextBlock Text="{x:Bind ListDetailsMenuItem.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+
             </StackPanel>
 
         </StackPanel>

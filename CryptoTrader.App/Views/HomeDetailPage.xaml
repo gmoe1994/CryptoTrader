@@ -38,6 +38,7 @@
                 <TextBlock Text="Price:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
 
                 <TextBlock Text="{x:Bind ViewModel.Item.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                <Button Content="Buy" Command="{x:Bind ViewModel.AddCommand}" />
             </StackPanel>
 
         </StackPanel>

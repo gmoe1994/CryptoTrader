@@ -4,15 +4,19 @@ using System.Linq;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Contracts.ViewModels;
 using CryptoTrader.App.Core.Contracts.Services;
 using CryptoTrader.App.Core.Models;
+using CryptoTrader.App.Services;
+using Microsoft.UI.Xaml.Controls;
 
 namespace CryptoTrader.App.ViewModels
 {
     public class ListDetailsViewModel : ObservableRecipient, INavigationAware
     {
         private readonly ICryptoService _cryptoService;
+        private readonly INavigationService _navigationService;
         private ObservableCollection<CryptoDto> _items = new();
 
         public ObservableCollection<CryptoDto> Items
@@ -27,15 +31,16 @@ namespace CryptoTrader.App.ViewModels
             set => SetProperty(ref _selected, value);
         }
 
-        public ListDetailsViewModel(ICryptoService cryptoService)
+        public ListDetailsViewModel(ICryptoService cryptoService, INavigationService navigationService)
         {
+            _navigationService = navigationService;
             _cryptoService = cryptoService;
         }
 
         public async void OnNavigatedTo(object parameter)
         {
 
-            var data = await _cryptoService.GetCryptoDtosAsync();
+            var data = await _cryptoService.GetCryptosAsync();
             foreach (var item in data)
             {
                 Items.Add(item);
@@ -43,49 +48,57 @@ namespace CryptoTrader.App.ViewModels
 
         }
 
-        private ICommand _addCommand;
-        public ICommand AddCommand
+        //private ICommand _addCommand;
+        //public ICommand AddCommand
+        //{
+        //    get
+        //    {
+        //        if (_addCommand == null)
+        //        {
+        //            _addCommand = new RelayCommand(async () =>
+        //            {
+        //                Selected.Quantity = 1;
+        //                var cryptoDto = await _cryptoService.CreateCryptoAsync(Selected);
+        //            });
+        //        }
+        //        return _addCommand;
+        //    }
+        //}
+
+        private ICommand _updateCommand;
+        public ICommand UpdateCommand
         {
             get
             {
-                if (_addCommand == null)
+                if (_updateCommand == null)
                 {
-                    _addCommand = new RelayCommand(async () =>
+                    _updateCommand = new RelayCommand(() =>
                     {
-                        //CharacterViewModel newCharacter = new() { ProfileImage = "Unknown.jpg" };
-                        //CharacterPage page = new(newCharacter);
-
-                        //ContentDialog dialog = new()
-                        //{
-                        //    Title = "Add new character",
-                        //    Content = page,
-                        //    PrimaryButtonText = "Add",
-                        //    IsPrimaryButtonEnabled = false,
-                        //    CloseButtonText = "Cancel",
-                        //    DefaultButton = ContentDialogButton.Primary,
-                        //    XamlRoot = _navigationService.Frame.XamlRoot
-                        //};
-
-                        //newCharacter.PropertyChanged += (sender, e) => dialog.IsPrimaryButtonEnabled = !newCharacter.HasErrors;
-
-                        //ContentDialogResult result = await dialog.ShowAsync();
-
-                        //if (result == ContentDialogResult.Primary)
-                        //{
-                        //    var characterDto = await _characterService.CreateCharacterAsync((CharacterDto)newCharacter);
-                        //    CharacterViewModel character = new(characterDto);
-
-                        //    Characters.Add(character);
-                        //    Selected = character;
-                        //}
-                        Selected.Quantity = 1;
-                        var cryptoDto = await _cryptoService.CreateCryptoAsync(Selected);
-
-
+                        Selected.Quantity += 1;
+                        _cryptoService.UpdateCryptoAsync(Selected);
                     });
                 }
+                return _updateCommand;
+            }
+        }
 
-                return _addCommand;
+        private ICommand _deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                if (_deleteCommand == null)
+                {
+                    _deleteCommand = new RelayCommand<CryptoDto>(async param =>
+                    {
+                        if (await _cryptoService.DeleteCryptoAsync(param))
+                        {
+                            _ = Items.Remove(param);
+                        }
+                    }, param => param != null);
+                }
+
+                return _deleteCommand;
             }
         }
 

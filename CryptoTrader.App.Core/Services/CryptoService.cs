@@ -53,14 +53,19 @@ namespace CryptoTrader.App.Core.Services
             return await response.Content.ReadFromJsonAsync<CryptoDto>();
         }
 
-        public Task<bool> DeleteCryptoAsync(CryptoDto crypto)
+        public async Task<bool> DeleteCryptoAsync(CryptoDto crypto)
         {
-            throw new NotImplementedException();
+            HttpResponseMessage response = await _httpClient.DeleteAsync($"CryptoCurrencies/{crypto.Id}");
+            return response.IsSuccessStatusCode;
         }
 
-        public void UpdateCryptoAsync(CryptoDto crypto)
+        public async void UpdateCryptoAsync(CryptoDto crypto)
         {
-            throw new NotImplementedException();
+            HttpResponseMessage response = await _httpClient.PutAsJsonAsync($"CryptoCurrencies/{crypto.Id}", crypto);
+            response.EnsureSuccessStatusCode();
+
+            //return await response.Content.ReadFromJsonAsync<CryptoDto>();
         }
+
     }
 }

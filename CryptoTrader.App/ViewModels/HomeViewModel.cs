@@ -35,7 +35,7 @@ namespace CryptoTrader.App.ViewModels
         public async void OnNavigatedTo(object parameter)
         {
           
-            var cryptoDtos = await _externalApiService.GetCryptosAsync();
+            var cryptoDtos = await _externalApiService.GetCryptoDtosAsync();
 
             foreach (var cryptoDto in cryptoDtos)
             {
