@@ -11,7 +11,9 @@
 
 	<UserControl.Resources>
 		<local:ConvertToCurrency x:Key="ConvertToCurrency"/>
-	</UserControl.Resources>
+        <local:IntToString x:Key="IntToString"/>
+
+    </UserControl.Resources>
 	
     <ScrollViewer
         Name="ForegroundElement"
@@ -27,20 +29,20 @@
                     Source="{x:Bind ListDetailsMenuItem.Logo_url}"
                     Margin="0, 0, 0, 50"
                     />
-				<TextBlock Text="ID:" Style="{StaticResource DetailSubTitleStyle}" />
+                <TextBlock Text="ID:" Style="{StaticResource DetailSubTitleStyle}" />
+                <TextBlock Text="{x:Bind ListDetailsMenuItem.Id, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
 
-				<TextBlock Text="{x:Bind ListDetailsMenuItem.Id, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                <TextBlock Text="Name:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+                <TextBlock Text="{x:Bind ListDetailsMenuItem.Name, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
 
-				<TextBlock Text="Name:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+                <TextBlock Text="Quantity owned:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
+                <TextBlock Text="{x:Bind ListDetailsMenuItem.Quantity, Converter={StaticResource IntToString}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
 
-				<TextBlock Text="{x:Bind ListDetailsMenuItem.Name, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
-
-				<TextBlock Text="Price:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
-
+                <TextBlock Text="Bought at:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
                 <TextBlock Text="{x:Bind ListDetailsMenuItem.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
 
                 <TextBlock Text="Total Value:" Style="{StaticResource DetailSubTitleStyle}" Margin="0, 20, 0, 0" />
-                <TextBlock Text="{x:Bind ListDetailsMenuItem.Price, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                <TextBlock Text="{x:Bind ListDetailsMenuItem.Value, Converter={StaticResource ConvertToCurrency}, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
 
             </StackPanel>
 

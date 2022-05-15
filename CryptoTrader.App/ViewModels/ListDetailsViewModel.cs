@@ -16,7 +16,6 @@ namespace CryptoTrader.App.ViewModels
     public class ListDetailsViewModel : ObservableRecipient, INavigationAware
     {
         private readonly ICryptoService _cryptoService;
-        private readonly INavigationService _navigationService;
         private ObservableCollection<CryptoDto> _items = new();
 
         public ObservableCollection<CryptoDto> Items
@@ -31,18 +30,17 @@ namespace CryptoTrader.App.ViewModels
             set => SetProperty(ref _selected, value);
         }
 
-        public ListDetailsViewModel(ICryptoService cryptoService, INavigationService navigationService)
+        public ListDetailsViewModel(ICryptoService cryptoService)
         {
-            _navigationService = navigationService;
             _cryptoService = cryptoService;
         }
 
         public async void OnNavigatedTo(object parameter)
         {
-
             var data = await _cryptoService.GetCryptosAsync();
             foreach (var item in data)
             {
+                item.Value = item.Quantity * item.Price;
                 Items.Add(item);
             }
 
@@ -65,22 +63,54 @@ namespace CryptoTrader.App.ViewModels
         //    }
         //}
 
-        private ICommand _updateCommand;
-        public ICommand UpdateCommand
+        private ICommand _buyCommand;
+        public ICommand BuyCommand
         {
             get
             {
-                if (_updateCommand == null)
+                if (_buyCommand == null)
                 {
-                    _updateCommand = new RelayCommand(() =>
+                    _buyCommand = new RelayCommand(() =>
                     {
-                        Selected.Quantity += 1;
-                        _cryptoService.UpdateCryptoAsync(Selected);
+                        CryptoDto updating = new();
+                        Selected.Quantity ++;
+                        updating = Selected;
+                        _cryptoService.UpdateCryptoAsync(updating);
+                        updating.Value = updating.Price * updating.Quantity;
+                        Items.Remove(Selected);
+                        Items.Add(updating);
+                        Selected = Items.First();
+                        Selected = updating;
                     });
                 }
-                return _updateCommand;
+                return _buyCommand;
             }
         }
+
+        private ICommand _sellCommand;
+        public ICommand SellCommand
+        {
+            get
+            {
+                if (_sellCommand == null)
+                {
+                    _sellCommand = new RelayCommand(() =>
+                    {
+                        CryptoDto updating = new();
+                        Selected.Quantity--;
+                        updating = Selected;
+                        _cryptoService.UpdateCryptoAsync(updating);
+                        updating.Value = updating.Price * updating.Quantity;
+                        Items.Remove(Selected);
+                        Items.Add(updating);
+                        Selected = Items.First();
+                        Selected = updating;
+                    });
+                }
+                return _sellCommand;
+            }
+        }
+
 
         private ICommand _deleteCommand;
         public ICommand DeleteCommand

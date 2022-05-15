@@ -40,8 +40,17 @@ namespace CryptoTrader.App.ViewModels
                 {
                     _addCommand = new RelayCommand(async () =>
                     {
-                        Item.Quantity = 1;
-                        var cryptoDto = await _cryptoService.CreateCryptoAsync(Item);
+                        var toBuy = await _cryptoService.GetCryptoAsync(Item.Id);
+                        if (toBuy.Id == Item.Id)
+                        {
+                            toBuy.Quantity++;
+                            _cryptoService.UpdateCryptoAsync(toBuy);
+                        }
+                        else
+                        {
+                            Item.Quantity = 1;
+                            var cryptoDto = await _cryptoService.CreateCryptoAsync(Item);
+                        }
                     });
                 }
                 return _addCommand;

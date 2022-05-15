@@ -17,6 +17,8 @@ namespace CryptoTrader.App.Core.Models
 
         public int Quantity { get; set; }
 
+        public double Value { get; set; }
+
     }
 
 }

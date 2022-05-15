@@ -10,6 +10,7 @@ namespace CryptoTrader.App.Core.Contracts.Services
     {
         Task<IEnumerable<CryptoDto>> GetCryptoDtosAsync();
         Task<IEnumerable<CryptoDto>> GetCryptosAsync();
+        Task<CryptoDto> GetCryptoAsync(string id);
         Task<CryptoDto> CreateCryptoAsync(CryptoDto crypto);
         Task<bool> DeleteCryptoAsync(CryptoDto crypto);
         void UpdateCryptoAsync(CryptoDto crypto);

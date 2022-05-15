@@ -33,6 +33,7 @@ namespace CryptoTrader.App.Core.Services
 
         }
 
+
         public async Task<IEnumerable<CryptoDto>> GetCryptosAsync()
         {
             var items = new List<CryptoDto>();
@@ -43,6 +44,18 @@ namespace CryptoTrader.App.Core.Services
                 items = await Json.ToObjectAsync<List<CryptoDto>>(content);
             }
             return items;
+        }
+
+        public async Task<CryptoDto> GetCryptoAsync(string id)
+        {
+            var item = new CryptoDto();
+            HttpResponseMessage response = await _httpClient.GetAsync($"CryptoCurrencies/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                item = await Json.ToObjectAsync<CryptoDto>(content);
+            }
+            return item;
         }
 
         public async Task<CryptoDto> CreateCryptoAsync(CryptoDto crypto)
