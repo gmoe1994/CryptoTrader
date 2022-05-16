@@ -101,9 +101,9 @@
 			<controls:ListDetailsView.ListCommandBar>
 				<CommandBar>
 					<!--<AppBarButton Icon="Add" Label="Add" Command="{x:Bind ViewModel.AddCommand}"/>-->
-					<AppBarButton Icon="Add" Label="Buy" Command="{x:Bind ViewModel.BuyCommand}" CommandParameter="{x:Bind ViewModel.Selected, Mode=OneWay}" />
-                    <AppBarButton Icon="Remove" Label="Sell" Command="{x:Bind ViewModel.SellCommand}" CommandParameter="{x:Bind ViewModel.Selected, Mode=OneWay}" />
-					<AppBarButton Icon="Delete" Label="Sell all" Command="{x:Bind ViewModel.DeleteCommand}" CommandParameter="{x:Bind ViewModel.Selected, Mode=OneWay}" />
+                    <AppBarButton Icon="Add" Label="Buy" Command="{x:Bind ViewModel.BuyCommand}" CommandParameter="{x:Bind ViewModel.Selected, Mode=OneWay}" Background="Green" />
+                    <AppBarButton Icon="Remove" Label="Sell" Command="{x:Bind ViewModel.SellCommand}" CommandParameter="{x:Bind ViewModel.Selected, Mode=OneWay}" Background="Red" />
+                    <AppBarButton Icon="Delete" Label="Sell all" Command="{x:Bind ViewModel.DeleteCommand}" CommandParameter="{x:Bind ViewModel.Selected, Mode=OneWay}" />
 					<!--<CommandBar.SecondaryCommands>
 						<AppBarButton Icon="Setting" Label="Settings" Command="{x:Bind ViewModel.SettingsCommand}" />
 					</CommandBar.SecondaryCommands>-->

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -29,6 +30,8 @@ namespace CryptoTrader.App.ViewModels
             get => _selected;
             set => SetProperty(ref _selected, value);
         }
+
+        public bool IsCryptoSelected => Selected != null;
 
         public ListDetailsViewModel(ICryptoService cryptoService)
         {
@@ -70,7 +73,7 @@ namespace CryptoTrader.App.ViewModels
             {
                 if (_buyCommand == null)
                 {
-                    _buyCommand = new RelayCommand(() =>
+                    _buyCommand = new RelayCommand<CryptoDto>(param =>
                     {
                         CryptoDto updating = new();
                         Selected.Quantity ++;
@@ -81,7 +84,7 @@ namespace CryptoTrader.App.ViewModels
                         Items.Add(updating);
                         Selected = Items.First();
                         Selected = updating;
-                    });
+                    }, param => param != null);
                 }
                 return _buyCommand;
             }
@@ -94,18 +97,29 @@ namespace CryptoTrader.App.ViewModels
             {
                 if (_sellCommand == null)
                 {
-                    _sellCommand = new RelayCommand(() =>
+                    _sellCommand = new RelayCommand<CryptoDto>(async param =>
                     {
                         CryptoDto updating = new();
                         Selected.Quantity--;
-                        updating = Selected;
-                        _cryptoService.UpdateCryptoAsync(updating);
-                        updating.Value = updating.Price * updating.Quantity;
-                        Items.Remove(Selected);
-                        Items.Add(updating);
-                        Selected = Items.First();
-                        Selected = updating;
-                    });
+                        if(Selected.Quantity == 0)
+                        {
+                            if (await _cryptoService.DeleteCryptoAsync(param))
+                            {
+                                _ = Items.Remove(param);
+                            }
+                        }
+                        else
+                        {
+                            updating = Selected;
+                            _cryptoService.UpdateCryptoAsync(updating);
+                            updating.Value = updating.Price * updating.Quantity;
+                            Items.Remove(Selected);
+                            Items.Add(updating);
+                            Selected = Items.First();
+                            Selected = updating;
+                        }
+                        
+                    }, param => param != null);
                 }
                 return _sellCommand;
             }
