@@ -50,6 +50,7 @@ namespace CryptoTrader.App
             // Other Activation Handlers
 
             // Services
+            services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
             services.AddTransient<INavigationViewService, NavigationViewService>();
 
             services.AddSingleton<IActivationService, ActivationService>();
@@ -57,6 +58,7 @@ namespace CryptoTrader.App
             services.AddSingleton<INavigationService, NavigationService>();
 
             // Core Services
+            services.AddSingleton<ISampleDataService, SampleDataService>();
             services.AddSingleton<ICryptoService, CryptoService>();
 
             // Views and ViewModels
@@ -64,12 +66,16 @@ namespace CryptoTrader.App
             services.AddTransient<ShellViewModel>();
             services.AddTransient<WelcomeViewModel>();
             services.AddTransient<WelcomePage>();
-            services.AddTransient<HomeViewModel>();
-            services.AddTransient<HomePage>();
-            services.AddTransient<HomeDetailViewModel>();
-            services.AddTransient<HomeDetailPage>();
-            services.AddTransient<ListDetailsViewModel>();
-            services.AddTransient<ListDetailsPage>();
+            services.AddTransient<MarketDetailViewModel>();
+            services.AddTransient<PortfolioViewModel>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<SettingsPage>();
+            services.AddTransient<PortfolioViewModel>();
+            services.AddTransient<PortfolioPage>();
+            services.AddTransient<MarketViewModel>();
+            services.AddTransient<MarketPage>();
+            services.AddTransient<MarketDetailViewModel>();
+            services.AddTransient<MarketDetailPage>();
             return services.BuildServiceProvider();
         }
     }

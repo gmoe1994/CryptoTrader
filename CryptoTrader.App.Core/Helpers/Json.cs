@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.Threading.Tasks;
 
-namespace ComicsUniverse.Core.Helpers
+//coypied from ComicsUniverse
+namespace CryptoTrader.App.Core.Helpers
 {
     public static class Json
     {

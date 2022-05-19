@@ -7,19 +7,19 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace CryptoTrader.App.Views
 {
-    public sealed partial class ListDetailsPage : Page
+    public sealed partial class PortfolioPage : Page
     {
-        public ListDetailsViewModel ViewModel { get; }
+        public PortfolioViewModel ViewModel { get; }
 
-        public ListDetailsPage()
+        public PortfolioPage()
         {
-            ViewModel = Ioc.Default.GetService<ListDetailsViewModel>();
+            ViewModel = Ioc.Default.GetService<PortfolioViewModel>();
             InitializeComponent();
         }
 
         private void OnViewStateChanged(object sender, ListDetailsViewState e)
         {
-            
+
         }
     }
 }

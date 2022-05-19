@@ -9,13 +9,13 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace CryptoTrader.App.Views
 {
-    public sealed partial class HomeDetailPage : Page
+    public sealed partial class MarketDetailPage : Page
     {
-        public HomeDetailViewModel ViewModel { get; }
+        public MarketDetailViewModel ViewModel { get; }
 
-        public HomeDetailPage()
+        public MarketDetailPage()
         {
-            ViewModel = Ioc.Default.GetService<HomeDetailViewModel>();
+            ViewModel = Ioc.Default.GetService<MarketDetailViewModel>();
             InitializeComponent();
         }
 

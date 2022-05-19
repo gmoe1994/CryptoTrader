@@ -51,7 +51,7 @@ namespace CryptoTrader.App.Services
         {
             if (args.IsSettingsInvoked)
             {
-                // Navigate to the settings page - implement as appropriate if needed
+                _navigationService.NavigateTo(typeof(SettingsViewModel).FullName);
             }
             else
             {

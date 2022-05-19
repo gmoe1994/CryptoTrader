@@ -14,7 +14,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace CryptoTrader.App.ViewModels
 {
-    public class ListDetailsViewModel : ObservableRecipient, INavigationAware
+    public class PortfolioViewModel : ObservableRecipient, INavigationAware
     {
         private readonly ICryptoService _cryptoService;
         private ObservableCollection<CryptoDto> _items = new();
@@ -33,7 +33,7 @@ namespace CryptoTrader.App.ViewModels
 
         public bool IsCryptoSelected => Selected != null;
 
-        public ListDetailsViewModel(ICryptoService cryptoService)
+        public PortfolioViewModel(ICryptoService cryptoService)
         {
             _cryptoService = cryptoService;
         }
@@ -76,7 +76,7 @@ namespace CryptoTrader.App.ViewModels
                     _buyCommand = new RelayCommand<CryptoDto>(param =>
                     {
                         CryptoDto updating = new();
-                        Selected.Quantity ++;
+                        Selected.Quantity++;
                         updating = Selected;
                         _cryptoService.UpdateCryptoAsync(updating);
                         updating.Value = updating.Price * updating.Quantity;
@@ -101,7 +101,7 @@ namespace CryptoTrader.App.ViewModels
                     {
                         CryptoDto updating = new();
                         Selected.Quantity--;
-                        if(Selected.Quantity == 0)
+                        if (Selected.Quantity == 0)
                         {
                             if (await _cryptoService.DeleteCryptoAsync(param))
                             {
@@ -118,7 +118,7 @@ namespace CryptoTrader.App.ViewModels
                             Selected = Items.First();
                             Selected = updating;
                         }
-                        
+
                     }, param => param != null);
                 }
                 return _sellCommand;

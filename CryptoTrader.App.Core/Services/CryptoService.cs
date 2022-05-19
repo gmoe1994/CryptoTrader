@@ -1,5 +1,6 @@
-﻿using ComicsUniverse.Core.Helpers;
+﻿
 using CryptoTrader.App.Core.Contracts.Services;
+using CryptoTrader.App.Core.Helpers;
 using CryptoTrader.App.Core.Models;
 using Newtonsoft.Json;
 using System;

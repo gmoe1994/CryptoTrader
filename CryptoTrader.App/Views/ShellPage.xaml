@@ -15,8 +15,8 @@
         IsBackButtonVisible="Visible"
         IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
         SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
-        IsSettingsVisible="False"
-        ExpandedModeThresholdWidth="1280"
+        IsSettingsVisible="True"
+        ExpandedModeThresholdWidth="1280"      
         Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
         <NavigationView.MenuItems>
@@ -27,8 +27,8 @@
             Edit String/en-US/Resources.resw: Add a menu item title for each page
             -->
             <NavigationViewItem x:Uid="Shell_Welcome" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.WelcomeViewModel" />
-            <NavigationViewItem x:Uid="Shell_Home" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.HomeViewModel" />
-            <NavigationViewItem x:Uid="Shell_ListDetails" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.ListDetailsViewModel" />
+            <NavigationViewItem x:Uid="Shell_Market" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.MarketViewModel" />
+            <NavigationViewItem x:Uid="Shell_Portfolio" Icon="Document" helpers:NavHelper.NavigateTo="CryptoTrader.App.ViewModels.PortfolioViewModel" />
         </NavigationView.MenuItems>
         <NavigationView.HeaderTemplate>
             <DataTemplate>

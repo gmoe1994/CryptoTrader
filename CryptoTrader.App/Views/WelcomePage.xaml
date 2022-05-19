@@ -7,12 +7,14 @@
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
-    <StackPanel>
-        <TextBlock
-            FontSize="24"
-            Text="Welcome, Start building you portfolio by adding crypto ccurrencys from home"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center" />
-            
-    </StackPanel>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="https://themes10.win/wp-content/uploads/2020/09/Crypto-Background.jpg" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+        </Grid.RowDefinitions>
+    </Grid>
 </Page>

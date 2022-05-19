@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace CryptoTrader.App.Views
 {
-    public sealed partial class ListDetailsDetailControl : UserControl
+    public sealed partial class PortfolioDetailControl : UserControl
     {
         public CryptoDto ListDetailsMenuItem
         {
@@ -13,16 +13,16 @@ namespace CryptoTrader.App.Views
             set { SetValue(ListDetailsMenuItemProperty, value); }
         }
 
-        public static readonly DependencyProperty ListDetailsMenuItemProperty = DependencyProperty.Register("ListDetailsMenuItem", typeof(CryptoDto), typeof(ListDetailsDetailControl), new PropertyMetadata(null, OnListDetailsMenuItemPropertyChanged));
+        public static readonly DependencyProperty ListDetailsMenuItemProperty = DependencyProperty.Register("ListDetailsMenuItem", typeof(CryptoDto), typeof(PortfolioDetailControl), new PropertyMetadata(null, OnListDetailsMenuItemPropertyChanged));
 
-        public ListDetailsDetailControl()
+        public PortfolioDetailControl()
         {
             InitializeComponent();
         }
 
         private static void OnListDetailsMenuItemPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var control = d as ListDetailsDetailControl;
+            var control = d as PortfolioDetailControl;
             control.ForegroundElement.ChangeView(0, 0, 1);
         }
     }

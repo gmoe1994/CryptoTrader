@@ -13,7 +13,7 @@ using CryptoTrader.App.Core.Services;
 
 namespace CryptoTrader.App.ViewModels
 {
-    public class HomeViewModel : ObservableRecipient, INavigationAware
+    public class MarketViewModel : ObservableRecipient, INavigationAware
     {
         private readonly INavigationService _navigationService;
         private readonly ICryptoService _externalApiService;
@@ -22,7 +22,7 @@ namespace CryptoTrader.App.ViewModels
         public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<CryptoDto>(OnItemClick));
 
 
-        public HomeViewModel(INavigationService navigationService, ICryptoService externalApiService)
+        public MarketViewModel(INavigationService navigationService, ICryptoService externalApiService)
         {
             _navigationService = navigationService;
             _externalApiService = externalApiService;
@@ -34,7 +34,7 @@ namespace CryptoTrader.App.ViewModels
 
         public async void OnNavigatedTo(object parameter)
         {
-          
+
             var cryptoDtos = await _externalApiService.GetCryptoDtosAsync();
 
             foreach (var cryptoDto in cryptoDtos)
@@ -52,8 +52,9 @@ namespace CryptoTrader.App.ViewModels
             if (clickedItem != null)
             {
                 _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
-                _navigationService.NavigateTo(typeof(HomeDetailViewModel).FullName, clickedItem.Id);
+                _navigationService.NavigateTo(typeof(MarketDetailViewModel).FullName, clickedItem.Id);
             }
         }
     }
 }
+

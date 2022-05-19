@@ -14,7 +14,7 @@ using ContentDialog = Microsoft.UI.Xaml.Controls.ContentDialog;
 
 namespace CryptoTrader.App.ViewModels
 {
-    public class HomeDetailViewModel : ObservableRecipient, INavigationAware
+    public class MarketDetailViewModel : ObservableRecipient, INavigationAware
     {
         private readonly ICryptoService _cryptoService;
         private CryptoDto _item;
@@ -26,7 +26,7 @@ namespace CryptoTrader.App.ViewModels
         }
 
 
-        public HomeDetailViewModel(ICryptoService cryptoService)
+        public MarketDetailViewModel(ICryptoService cryptoService)
         {
             _cryptoService = cryptoService;
         }

@@ -3,17 +3,20 @@
 using CryptoTrader.App.ViewModels;
 
 using Microsoft.UI.Xaml.Controls;
+using System;
 
 namespace CryptoTrader.App.Views
 {
-    public sealed partial class HomePage : Page
+    public sealed partial class MarketPage : Page
     {
-        public HomeViewModel ViewModel { get; }
+        public MarketViewModel ViewModel { get; }
 
-        public HomePage()
+        public MarketPage()
         {
-            ViewModel = Ioc.Default.GetService<HomeViewModel>();
+            ViewModel = Ioc.Default.GetService<MarketViewModel>();
             InitializeComponent();
         }
+
+        
     }
 }

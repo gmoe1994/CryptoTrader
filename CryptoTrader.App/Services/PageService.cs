@@ -19,9 +19,10 @@ namespace CryptoTrader.App.Services
         public PageService()
         {
             Configure<WelcomeViewModel, WelcomePage>();
-            Configure<HomeViewModel, HomePage>();
-            Configure<HomeDetailViewModel, HomeDetailPage>();
-            Configure<ListDetailsViewModel, ListDetailsPage>();
+            Configure<SettingsViewModel, SettingsPage>();
+            Configure<PortfolioViewModel, PortfolioPage>();
+            Configure<MarketViewModel, MarketPage>();
+            Configure<MarketDetailViewModel, MarketDetailPage>();
         }
 
         public Type GetPageType(string key)

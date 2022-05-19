@@ -18,13 +18,15 @@ namespace CryptoTrader.App.Services
         private readonly ActivationHandler<LaunchActivatedEventArgs> _defaultHandler;
         private readonly IEnumerable<IActivationHandler> _activationHandlers;
         private readonly INavigationService _navigationService;
+        private readonly IThemeSelectorService _themeSelectorService;
         private UIElement _shell = null;
 
-        public ActivationService(ActivationHandler<LaunchActivatedEventArgs> defaultHandler, IEnumerable<IActivationHandler> activationHandlers, INavigationService navigationService)
+        public ActivationService(ActivationHandler<LaunchActivatedEventArgs> defaultHandler, IEnumerable<IActivationHandler> activationHandlers, INavigationService navigationService, IThemeSelectorService themeSelectorService)
         {
             _defaultHandler = defaultHandler;
             _activationHandlers = activationHandlers;
             _navigationService = navigationService;
+            _themeSelectorService = themeSelectorService;
         }
 
         public async Task ActivateAsync(object activationArgs)
@@ -68,11 +70,13 @@ namespace CryptoTrader.App.Services
 
         private async Task InitializeAsync()
         {
+            await _themeSelectorService.InitializeAsync().ConfigureAwait(false);
             await Task.CompletedTask;
         }
 
         private async Task StartupAsync()
         {
+            await _themeSelectorService.SetRequestedThemeAsync();
             await Task.CompletedTask;
         }
     }
