@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using CommunityToolkit.WinUI.UI.Animations;
 
 using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.ViewModels;

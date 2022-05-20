@@ -1,11 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using CryptoTrader.App.Contracts.Services;
+﻿using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Helpers;
-
 using Microsoft.UI.Xaml;
-
+using System;
+using System.Threading.Tasks;
 using Windows.Storage;
 
 namespace CryptoTrader.App.Services

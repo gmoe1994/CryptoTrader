@@ -12,9 +12,6 @@
             <ImageBrush Stretch="Fill" ImageSource="https://themes10.win/wp-content/uploads/2020/09/Crypto-Background.jpg" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50*" />
-            <RowDefinition Height="50*" />
-        </Grid.RowDefinitions>
+        <TextBlock Text="CryptoTrader" HorizontalAlignment="Center" Margin="0, 20, 0, 0" FontSize="30"/>
     </Grid>
 </Page>

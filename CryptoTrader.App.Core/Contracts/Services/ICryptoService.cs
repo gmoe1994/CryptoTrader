@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CryptoTrader.App.Core.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-
-using CryptoTrader.App.Core.Models;
 
 namespace CryptoTrader.App.Core.Contracts.Services
 {

@@ -3,7 +3,6 @@
 using CryptoTrader.App.ViewModels;
 
 using Microsoft.UI.Xaml.Controls;
-using System;
 
 namespace CryptoTrader.App.Views
 {
@@ -17,6 +16,6 @@ namespace CryptoTrader.App.Views
             InitializeComponent();
         }
 
-        
+
     }
 }

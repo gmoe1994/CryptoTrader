@@ -1,10 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using CryptoTrader.App.Contracts.Services;
+﻿using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.ViewModels;
-
 using Microsoft.UI.Xaml;
+using System;
+using System.Threading.Tasks;
 
 namespace CryptoTrader.App.Activation
 {

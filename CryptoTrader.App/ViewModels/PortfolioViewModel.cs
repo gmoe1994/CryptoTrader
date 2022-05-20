@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Contracts.ViewModels;
 using CryptoTrader.App.Core.Contracts.Services;
 using CryptoTrader.App.Core.Models;
-using CryptoTrader.App.Services;
-using Microsoft.UI.Xaml.Controls;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
 
 namespace CryptoTrader.App.ViewModels
 {
@@ -49,24 +45,12 @@ namespace CryptoTrader.App.ViewModels
 
         }
 
-        //private ICommand _addCommand;
-        //public ICommand AddCommand
-        //{
-        //    get
-        //    {
-        //        if (_addCommand == null)
-        //        {
-        //            _addCommand = new RelayCommand(async () =>
-        //            {
-        //                Selected.Quantity = 1;
-        //                var cryptoDto = await _cryptoService.CreateCryptoAsync(Selected);
-        //            });
-        //        }
-        //        return _addCommand;
-        //    }
-        //}
+
 
         private ICommand _buyCommand;
+        /// <summary>Gets the buy command.
+        /// An update Command which increases the objects quantity by 1</summary>
+        /// <value>The buy command.</value>
         public ICommand BuyCommand
         {
             get
@@ -91,6 +75,9 @@ namespace CryptoTrader.App.ViewModels
         }
 
         private ICommand _sellCommand;
+        /// <summary>Gets the sell command.
+        /// Update command which decreases the objects quantity by 1</summary>
+        /// <value>The sell command.</value>
         public ICommand SellCommand
         {
             get
@@ -127,6 +114,9 @@ namespace CryptoTrader.App.ViewModels
 
 
         private ICommand _deleteCommand;
+        /// <summary>Gets the delete command.
+        /// Deletes selected item from database and portfolio</summary>
+        /// <value>The delete command.</value>
         public ICommand DeleteCommand
         {
             get

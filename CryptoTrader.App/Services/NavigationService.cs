@@ -3,8 +3,6 @@
 using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Contracts.ViewModels;
 using CryptoTrader.App.Helpers;
-
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 

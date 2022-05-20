@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Contracts.ViewModels;
 using CryptoTrader.App.Core.Contracts.Services;
 using CryptoTrader.App.Core.Models;
-using CryptoTrader.App.Core.Services;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace CryptoTrader.App.ViewModels
 {
@@ -28,7 +24,6 @@ namespace CryptoTrader.App.ViewModels
             _externalApiService = externalApiService;
         }
 
-        //private readonly ExternalApiService service = new ExternalApiService();
 
         public ObservableCollection<CryptoDto> Coins { get; set; } = new ObservableCollection<CryptoDto>();
 

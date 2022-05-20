@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using CommunityToolkit.Mvvm.DependencyInjection;
-
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using CryptoTrader.App.Activation;
 using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Views;
-
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace CryptoTrader.App.Services
 {

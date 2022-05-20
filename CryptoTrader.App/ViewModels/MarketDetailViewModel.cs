@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows.Input;
-using ABI.Microsoft.UI.Xaml.Controls;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CryptoTrader.App.Contracts.ViewModels;
 using CryptoTrader.App.Core.Contracts.Services;
 using CryptoTrader.App.Core.Models;
-using CryptoTrader.App.Services;
-using Microsoft.UI.Xaml.Controls;
-using ContentDialog = Microsoft.UI.Xaml.Controls.ContentDialog;
+using System.Linq;
+using System.Windows.Input;
 
 namespace CryptoTrader.App.ViewModels
 {
@@ -32,6 +26,11 @@ namespace CryptoTrader.App.ViewModels
         }
 
         private ICommand _addCommand;
+        /// <summary>
+        /// Gets the add command.
+        /// If the item already exists in portfolio/database, the items quantity is increased by 1 and updated. Else it creates a new object in the database and is added to the portfolio.
+        /// </summary>
+        /// <value>The add command.</value>
         public ICommand AddCommand
         {
             get

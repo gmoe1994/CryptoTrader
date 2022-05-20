@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using CryptoTrader.App.Contracts.Services;
+﻿using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Helpers;
 using CryptoTrader.App.ViewModels;
-
 using Microsoft.UI.Xaml.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CryptoTrader.App.Services
 {

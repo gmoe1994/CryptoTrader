@@ -1,15 +1,17 @@
 ﻿using Microsoft.UI.Xaml.Data;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptoTrader.App.Helpers
 {
     public class ConvertToCurrency : IValueConverter
     {
+        /// <summary>Converts the specified value to a currency format</summary>
+        /// <param name="value">The value.</param>
+        /// <param name="targetType">Type of the target.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="language">The language.</param>
+        /// <returns>System.Object.</returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var toConvert = value;

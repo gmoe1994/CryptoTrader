@@ -1,14 +1,16 @@
 ﻿using Microsoft.UI.Xaml.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptoTrader.App.Helpers
 {
     public class IntToString : IValueConverter
     {
+        /// <summary>Converts the specified value.</summary>
+        /// <param name="value">The value.</param>
+        /// <param name="targetType">Type of the target.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="language">The language.</param>
+        /// <returns>System.Object.</returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             return value.ToString();

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Windows.Input;
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Helpers;
-
 using Microsoft.UI.Xaml;
-
+using System.Windows.Input;
 using Windows.ApplicationModel;
 
 namespace CryptoTrader.App.ViewModels

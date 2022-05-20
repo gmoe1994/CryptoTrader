@@ -1,9 +1,8 @@
-﻿using System;
-using CryptoTrader.App.Core.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CryptoTrader.App.Core.Models;
-using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CryptoTrader.App.Contracts.ViewModels;
+using CryptoTrader.App.Core.Models;
+using CryptoTrader.App.Core.Services;
+using System.Collections.ObjectModel;
 
 namespace CryptoTrader.App.ViewModels
 {

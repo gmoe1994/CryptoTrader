@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml.Controls;
+using System;
 using System.Collections.Generic;
-
-using Microsoft.UI.Xaml.Controls;
 
 namespace CryptoTrader.App.Contracts.Services
 {

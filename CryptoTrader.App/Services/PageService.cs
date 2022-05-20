@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.ViewModels;
 using CryptoTrader.App.Views;
-
 using Microsoft.UI.Xaml.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CryptoTrader.App.Services
 {

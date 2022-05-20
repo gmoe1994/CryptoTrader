@@ -1,10 +1,6 @@
-﻿using System;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CryptoTrader.App.Contracts.Services;
 using CryptoTrader.App.Views;
-
 using Microsoft.UI.Xaml.Navigation;
 
 namespace CryptoTrader.App.ViewModels
