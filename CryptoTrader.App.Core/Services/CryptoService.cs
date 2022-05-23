@@ -2,6 +2,7 @@
 using CryptoTrader.App.Core.Contracts.Services;
 using CryptoTrader.App.Core.Helpers;
 using CryptoTrader.App.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -17,17 +18,25 @@ namespace CryptoTrader.App.Core.Services
             _httpClient = new HttpClient() { BaseAddress = new System.Uri(ApiAdress.PortfolioApi) };
         }
 
-
         private readonly HttpClient _httpClient;
 
 
         public async Task<IEnumerable<CryptoDto>> GetCryptoDtosAsync()
         {
             var client = new WebClient();
-            var itemsInString = await client.DownloadStringTaskAsync(ApiAdress.GetApiAdress());
-            var items = await Json.ToObjectAsync<List<CryptoDto>>(itemsInString);
-            return items;
+            List<CryptoDto> items;
+            
+            try
+            {
+                var itemsInString = await client.DownloadStringTaskAsync(ApiAdress.GetApiAdress());
+                items = await Json.ToObjectAsync<List<CryptoDto>>(itemsInString);
+            }
+            catch (WebException e)
+            {
+                throw e;
+            }
 
+            return items;
         }
 
 

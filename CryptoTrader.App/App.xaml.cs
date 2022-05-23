@@ -24,6 +24,7 @@ namespace CryptoTrader.App
             InitializeComponent();
             UnhandledException += App_UnhandledException;
             Ioc.Default.ConfigureServices(ConfigureServices());
+            Current.RequestedTheme = (ApplicationTheme) 1;
         }
 
         private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
