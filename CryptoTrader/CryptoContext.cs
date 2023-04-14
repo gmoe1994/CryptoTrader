@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace CryptoTrader
 {
@@ -16,10 +17,7 @@ namespace CryptoTrader
         {
             SqlConnectionStringBuilder builder = new()
             {
-                DataSource = "Donau.hiof.no",
-                InitialCatalog = "thomasjg",
-                UserID = "thomasjg",
-                Password = "wtYSS9wz83"
+                //Configure connection for a sql server. Then run migration
             };
 
             optionsBuilder.UseSqlServer(builder.ConnectionString.ToString());
